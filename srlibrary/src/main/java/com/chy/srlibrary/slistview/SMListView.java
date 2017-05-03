@@ -19,7 +19,7 @@ import com.chy.srlibrary.interfaceutil.SwipeMenuCreatorInterfaceUtil;
  * @author CHY  2016/11/8.
  *         Function Describe
  */
-public class SwipeMenuListView extends ListView {
+public class SMListView extends ListView {
 
 	private static final int TOUCH_STATE_NONE = 0;
 	private static final int TOUCH_STATE_X = 1;
@@ -36,26 +36,26 @@ public class SwipeMenuListView extends ListView {
 	private int mTouchState;
 	private int mTouchPosition;
 	private boolean swipeEnable = true;
-	private SwipeMenuLayout mTouchView;
-	private SwipeMenuListView.OnSwipeListener mOnSwipeListener;
+	private SMLayout mTouchView;
+	private SMListView.OnSwipeListener mOnSwipeListener;
 
 	private SwipeMenuCreatorInterfaceUtil mMenuCreator;
-	private SwipeMenuListView.OnMenuItemClickListener mOnMenuItemClickListener;
-	private SwipeMenuListView.OnMenuStateChangeListener mOnMenuStateChangeListener;
+	private SMListView.OnMenuItemClickListener mOnMenuItemClickListener;
+	private SMListView.OnMenuStateChangeListener mOnMenuStateChangeListener;
 	private Interpolator mCloseInterpolator;
 	private Interpolator mOpenInterpolator;
 
-	public SwipeMenuListView(Context context) {
+	public SMListView(Context context) {
 		super(context);
 		init();
 	}
 
-	public SwipeMenuListView(Context context, AttributeSet attrs, int defStyle) {
+	public SMListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
 	}
 
-	public SwipeMenuListView(Context context, AttributeSet attrs) {
+	public SMListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
 	}
@@ -68,7 +68,7 @@ public class SwipeMenuListView extends ListView {
 
 	@Override
 	public void setAdapter(ListAdapter adapter) {
-		super.setAdapter(new SwipeMenuAdapter(getContext(), adapter) {
+		super.setAdapter(new SMAdapter(getContext(), adapter) {
 			@Override
 			public void createMenu(SwipeMenu menu) {
 				if (mMenuCreator != null) {
@@ -77,7 +77,7 @@ public class SwipeMenuListView extends ListView {
 			}
 
 			@Override
-			public void onItemClick(SwipeMenuView view, SwipeMenu menu,
+			public void onItemClick(SMView view, SwipeMenu menu,
 									int index) {
 				boolean flag = false;
 				if (mOnMenuItemClickListener != null) {
@@ -147,8 +147,8 @@ public class SwipeMenuListView extends ListView {
 					}
 					return true;
 				}
-				if (view instanceof SwipeMenuLayout) {
-					mTouchView = (SwipeMenuLayout) view;
+				if (view instanceof SMLayout) {
+					mTouchView = (SMLayout) view;
 					mTouchView.setSwipeDirection(mDirection);
 				}
 				if (mTouchView != null) {
@@ -213,12 +213,12 @@ public class SwipeMenuListView extends ListView {
 		if (position >= getFirstVisiblePosition()
 				&& position <= getLastVisiblePosition()) {
 			View view = getChildAt(position - getFirstVisiblePosition());
-			if (view instanceof SwipeMenuLayout) {
+			if (view instanceof SMLayout) {
 				mTouchPosition = position;
 				if (mTouchView != null && mTouchView.isOpen()) {
 					mTouchView.smoothCloseMenu();
 				}
-				mTouchView = (SwipeMenuLayout) view;
+				mTouchView = (SMLayout) view;
 				mTouchView.setSwipeDirection(mDirection);
 				mTouchView.smoothOpenMenu();
 			}

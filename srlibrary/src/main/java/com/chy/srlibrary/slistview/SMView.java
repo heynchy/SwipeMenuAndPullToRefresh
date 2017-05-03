@@ -19,12 +19,12 @@ import java.util.List;
  *
  * @author CHY  2016/11/8.
  */
-public class SwipeMenuView extends LinearLayout implements View.OnClickListener {
+public class SMView extends LinearLayout implements View.OnClickListener {
 
-	private SwipeMenuListView mListView;
-	private SwipeMenuLayout mLayout;
+	private SMListView mListView;
+	private SMLayout mLayout;
 	private SwipeMenu mMenu;
-	private SwipeMenuView.OnSwipeItemClickListener onItemClickListener;
+	private SMView.OnSwipeItemClickListener onItemClickListener;
 	private int position;
 
 	public int getPosition() {
@@ -35,7 +35,7 @@ public class SwipeMenuView extends LinearLayout implements View.OnClickListener 
 		this.position = position;
 	}
 
-	public SwipeMenuView(SwipeMenu menu, SwipeMenuListView listView) {
+	public SMView(SwipeMenu menu, SMListView listView) {
 		super(menu.getContext());
 		mListView = listView;
 		mMenu = menu;
@@ -97,12 +97,12 @@ public class SwipeMenuView extends LinearLayout implements View.OnClickListener 
 		this.onItemClickListener = onItemClickListener;
 	}
 
-	public void setLayout(SwipeMenuLayout mLayout) {
+	public void setLayout(SMLayout mLayout) {
 		this.mLayout = mLayout;
 	}
 
 	public static interface OnSwipeItemClickListener {
-		void onItemClick(SwipeMenuView view, SwipeMenu menu, int index);
+		void onItemClick(SMView view, SwipeMenu menu, int index);
 	}
 }
 

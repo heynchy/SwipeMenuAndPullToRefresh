@@ -11,7 +11,7 @@ import com.chy.srlibrary.interfaceutil.PullableUtil;
  *
  * @author CHY  2016/11/14.
  */
-public class SWRListView extends SwipeMenuListView implements PullableUtil {
+public class SWRListView extends SMListView implements PullableUtil {
 	public SWRListView(Context context) {
 		super(context);
 	}

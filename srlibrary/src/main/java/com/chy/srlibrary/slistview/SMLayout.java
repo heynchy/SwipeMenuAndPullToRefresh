@@ -19,7 +19,7 @@ import android.widget.FrameLayout;
  *
  * @author CHY  2016/11/8.
  */
-public class SwipeMenuLayout extends FrameLayout {
+public class SMLayout extends FrameLayout {
 
 	private static final int CONTENT_VIEW_ID = 1;
 	private static final int MENU_VIEW_ID = 2;
@@ -30,7 +30,7 @@ public class SwipeMenuLayout extends FrameLayout {
 	private int mSwipeDirection;
 
 	private View mContentView;
-	private SwipeMenuView mMenuView;
+	private SMView mMenuView;
 	private int mDownX;
 	private int state = STATE_CLOSE;
 	private GestureDetectorCompat mGestureDetector;
@@ -45,12 +45,12 @@ public class SwipeMenuLayout extends FrameLayout {
 	private Interpolator mCloseInterpolator;
 	private Interpolator mOpenInterpolator;
 
-	public SwipeMenuLayout(View contentView, SwipeMenuView menuView) {
+	public SMLayout(View contentView, SMView menuView) {
 		this(contentView, menuView, null, null);
 	}
 
-	public SwipeMenuLayout(View contentView, SwipeMenuView menuView,
-						   Interpolator closeInterpolator, Interpolator openInterpolator) {
+	public SMLayout(View contentView, SMView menuView,
+					Interpolator closeInterpolator, Interpolator openInterpolator) {
 		super(contentView.getContext());
 		mCloseInterpolator = closeInterpolator;
 		mOpenInterpolator = openInterpolator;
@@ -65,11 +65,11 @@ public class SwipeMenuLayout extends FrameLayout {
 	// super(context, attrs, defStyle);
 	// }
 
-	private SwipeMenuLayout(Context context, AttributeSet attrs) {
+	private SMLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	private SwipeMenuLayout(Context context) {
+	private SMLayout(Context context) {
 		super(context);
 	}
 
@@ -216,7 +216,7 @@ public class SwipeMenuLayout extends FrameLayout {
 		mContentView.layout(-dis, mContentView.getTop(),
 				mContentView.getWidth() - dis, getMeasuredHeight());
 
-		if (mSwipeDirection == SwipeMenuListView.DIRECTION_LEFT) {
+		if (mSwipeDirection == SMListView.DIRECTION_LEFT) {
 
 			mMenuView.layout(mContentView.getWidth() - dis, mMenuView.getTop(),
 					mContentView.getWidth() + mMenuView.getWidth() - dis,
@@ -244,7 +244,7 @@ public class SwipeMenuLayout extends FrameLayout {
 
 	public void smoothCloseMenu() {
 		state = STATE_CLOSE;
-		if (mSwipeDirection == SwipeMenuListView.DIRECTION_LEFT) {
+		if (mSwipeDirection == SMListView.DIRECTION_LEFT) {
 			mBaseX = -mContentView.getLeft();
 			mCloseScroller.startScroll(0, 0, mMenuView.getWidth(), 0, 350);
 		} else {
@@ -256,7 +256,7 @@ public class SwipeMenuLayout extends FrameLayout {
 
 	public void smoothOpenMenu() {
 		state = STATE_OPEN;
-		if (mSwipeDirection == SwipeMenuListView.DIRECTION_LEFT) {
+		if (mSwipeDirection == SMListView.DIRECTION_LEFT) {
 			mOpenScroller.startScroll(-mContentView.getLeft(), 0, mMenuView.getWidth(), 0, 350);
 		} else {
 			mOpenScroller.startScroll(mContentView.getLeft(), 0, mMenuView.getWidth(), 0, 350);
@@ -285,7 +285,7 @@ public class SwipeMenuLayout extends FrameLayout {
 		return mContentView;
 	}
 
-	public SwipeMenuView getMenuView() {
+	public SMView getMenuView() {
 		return mMenuView;
 	}
 
@@ -306,7 +306,7 @@ public class SwipeMenuLayout extends FrameLayout {
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		mContentView.layout(0, 0, getMeasuredWidth(),
 				mContentView.getMeasuredHeight());
-		if (mSwipeDirection == SwipeMenuListView.DIRECTION_LEFT) {
+		if (mSwipeDirection == SMListView.DIRECTION_LEFT) {
 			mMenuView.layout(getMeasuredWidth(), 0,
 					getMeasuredWidth() + mMenuView.getMeasuredWidth(),
 					mContentView.getMeasuredHeight());

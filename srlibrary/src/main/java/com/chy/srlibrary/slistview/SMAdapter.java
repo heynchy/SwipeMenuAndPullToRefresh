@@ -14,18 +14,18 @@ import com.chy.srlibrary.SwipeMenuItem;
 
 
 /**
- * SwipeMenuAdapter
+ * SMAdapter
  *
  * @author CHY  2016/11/8.
  */
-public class SwipeMenuAdapter implements WrapperListAdapter,
-		SwipeMenuView.OnSwipeItemClickListener {
+public class SMAdapter implements WrapperListAdapter,
+		SMView.OnSwipeItemClickListener {
 
 	private ListAdapter mAdapter;
 	private Context mContext;
-	private SwipeMenuListView.OnMenuItemClickListener onMenuItemClickListener;
+	private SMListView.OnMenuItemClickListener onMenuItemClickListener;
 
-	public SwipeMenuAdapter(Context context, ListAdapter adapter) {
+	public SMAdapter(Context context, ListAdapter adapter) {
 		mAdapter = adapter;
 		mContext = context;
 	}
@@ -47,22 +47,22 @@ public class SwipeMenuAdapter implements WrapperListAdapter,
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		SwipeMenuLayout layout = null;
+		SMLayout layout = null;
 		if (convertView == null) {
 			View contentView = mAdapter.getView(position, convertView, parent);
 			SwipeMenu menu = new SwipeMenu(mContext);
 			menu.setViewType(mAdapter.getItemViewType(position));
 			createMenu(menu);
-			SwipeMenuView menuView = new SwipeMenuView(menu,
-					(SwipeMenuListView) parent);
+			SMView menuView = new SMView(menu,
+					(SMListView) parent);
 			menuView.setOnSwipeItemClickListener(this);
-			SwipeMenuListView listView = (SwipeMenuListView) parent;
-			layout = new SwipeMenuLayout(contentView, menuView,
+			SMListView listView = (SMListView) parent;
+			layout = new SMLayout(contentView, menuView,
 					listView.getCloseInterpolator(),
 					listView.getOpenInterpolator());
 			layout.setPosition(position);
 		} else {
-			layout = (SwipeMenuLayout) convertView;
+			layout = (SMLayout) convertView;
 			layout.closeMenu();
 			layout.setPosition(position);
 			View view = mAdapter.getView(position, layout.getContentView(),
@@ -87,7 +87,7 @@ public class SwipeMenuAdapter implements WrapperListAdapter,
 	}
 
 	@Override
-	public void onItemClick(SwipeMenuView view, SwipeMenu menu, int index) {
+	public void onItemClick(SMView view, SwipeMenu menu, int index) {
 		if (onMenuItemClickListener != null) {
 			onMenuItemClickListener.onMenuItemClick(view.getPosition(), menu,
 					index);
@@ -95,7 +95,7 @@ public class SwipeMenuAdapter implements WrapperListAdapter,
 	}
 
 	public void setOnMenuItemClickListener(
-			SwipeMenuListView.OnMenuItemClickListener onMenuItemClickListener) {
+			SMListView.OnMenuItemClickListener onMenuItemClickListener) {
 		this.onMenuItemClickListener = onMenuItemClickListener;
 	}
 
