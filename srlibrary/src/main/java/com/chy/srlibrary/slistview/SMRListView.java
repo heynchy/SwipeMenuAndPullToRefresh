@@ -11,16 +11,16 @@ import com.chy.srlibrary.interfaceutil.PullableUtil;
  *
  * @author CHY  2016/11/14.
  */
-public class SWRListView extends SMListView implements PullableUtil {
-	public SWRListView(Context context) {
+public class SMRListView extends SMListView implements PullableUtil {
+	public SMRListView(Context context) {
 		super(context);
 	}
 
-	public SWRListView(Context context, AttributeSet attrs, int defStyle) {
+	public SMRListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
-	public SWRListView(Context context, AttributeSet attrs) {
+	public SMRListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 

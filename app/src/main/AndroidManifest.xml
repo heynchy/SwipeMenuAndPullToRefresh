@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ExpandViewActivity.RExpandListViewActivity"/>
+        <activity android:name=".ExpandViewActivity.SMExpandListViewActivity"/>
+        <activity android:name=".ExpandViewActivity.SMRExpandListViewActivity"/>
+        <activity android:name=".ListViewAcitvity.RListViewActivity"/>
+        <activity android:name=".ListViewAcitvity.SMListViewActivity"/>
+        <activity android:name=".ListViewAcitvity.SMRListViewActivity"/>
     </application>
 
 </manifest>

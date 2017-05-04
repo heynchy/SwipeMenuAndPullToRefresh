@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="60dp"
-                android:background="@drawable/loading"
+                android:background="@drawable/refreshing"
                 android:visibility="gone"/>
 
             <TextView
