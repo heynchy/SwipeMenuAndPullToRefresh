@@ -16,7 +16,6 @@ import com.chy.srlibrary.expandview.SMExpandableView;
 import com.chy.srlibrary.expandview.SMRExpandView;
 import com.chy.srlibrary.interfaceutil.SwipeMenuCreatorInterfaceUtil;
 import com.chy.srlibrary.slistview.SMListView;
-import com.chy.srlibrary.slistview.SWRListView;
 import com.chy.swipemenuandpulltorefresh.Entity.StringEntity;
 import com.chy.swipemenuandpulltorefresh.R;
 import com.chy.swipemenuandpulltorefresh.adapter.StringDataAdapter;

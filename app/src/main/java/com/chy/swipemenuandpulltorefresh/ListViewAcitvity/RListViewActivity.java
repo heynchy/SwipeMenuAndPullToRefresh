@@ -14,7 +14,7 @@ import com.chy.srlibrary.SwipeMenu;
 import com.chy.srlibrary.SwipeMenuItem;
 import com.chy.srlibrary.interfaceutil.SwipeMenuCreatorInterfaceUtil;
 import com.chy.srlibrary.slistview.SMListView;
-import com.chy.srlibrary.slistview.SWRListView;
+import com.chy.srlibrary.slistview.SMRListView;
 import com.chy.swipemenuandpulltorefresh.R;
 import com.chy.swipemenuandpulltorefresh.adapter.StringDataAdapter;
 
@@ -27,7 +27,7 @@ import java.util.List;
 public class RListViewActivity extends AppCompatActivity  {
 
     private PTRLayoutView mPTRLayoutView; // 刷新控制器
-    private SWRListView mSWRListView;     // 侧滑listView
+    private SMRListView mSMRListView;     // 侧滑listView
     private StringDataAdapter mAdapter;
     private List<String> mDataList;
 
@@ -41,7 +41,7 @@ public class RListViewActivity extends AppCompatActivity  {
             mDataList.add("测试数据：" + i);
         }
         mAdapter = new StringDataAdapter(this, mDataList);
-        mSWRListView.setAdapter(mAdapter);
+        mSMRListView.setAdapter(mAdapter);
 
 //        // 设置侧滑的选项
 //        SwipeMenuCreatorInterfaceUtil creator = new SwipeMenuCreatorInterfaceUtil() {
@@ -61,7 +61,7 @@ public class RListViewActivity extends AppCompatActivity  {
 //        mSWRListView.setMenuCreator(creator);
 
         // 侧滑的监听事件
-        mSWRListView.setOnMenuItemClickListener(new SMListView.OnMenuItemClickListener() {
+        mSMRListView.setOnMenuItemClickListener(new SMListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int i, SwipeMenu swipeMenu, int i1) {
                 mDataList.remove(i);
@@ -92,7 +92,7 @@ public class RListViewActivity extends AppCompatActivity  {
 
     private void initView() {
         mPTRLayoutView = (PTRLayoutView) findViewById(R.id.refresh_view);
-        mSWRListView = (SWRListView) findViewById(R.id.lv_swipe_menu);
+        mSMRListView = (SMRListView) findViewById(R.id.lv_swipe_menu);
 
     }
 

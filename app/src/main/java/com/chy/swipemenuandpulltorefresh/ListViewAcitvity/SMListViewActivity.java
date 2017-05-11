@@ -14,7 +14,7 @@ import com.chy.srlibrary.SwipeMenu;
 import com.chy.srlibrary.SwipeMenuItem;
 import com.chy.srlibrary.interfaceutil.SwipeMenuCreatorInterfaceUtil;
 import com.chy.srlibrary.slistview.SMListView;
-import com.chy.srlibrary.slistview.SWRListView;
+import com.chy.srlibrary.slistview.SMRListView;
 import com.chy.swipemenuandpulltorefresh.R;
 import com.chy.swipemenuandpulltorefresh.adapter.StringDataAdapter;
 
@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class SMListViewActivity extends AppCompatActivity {
 
-    private SWRListView mSWRListView;     // 侧滑listView
+    private SMRListView mSWRListView;     // 侧滑listView
     private StringDataAdapter mAdapter;
     private List<String> mDataList;
 
@@ -73,7 +73,7 @@ public class SMListViewActivity extends AppCompatActivity {
 
 
     private void initView() {
-        mSWRListView = (SWRListView) findViewById(R.id.lv_swipe_menu);
+        mSWRListView = (SMRListView) findViewById(R.id.lv_swipe_menu);
 
     }
 
