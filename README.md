@@ -1,16 +1,16 @@
 # SwipeMenuAndPullToRefresh
 
-  ListView和ExpandableListView支持下拉刷新，上拉加载和侧滑删除三个功能;
+ListView和ExpandableListView支持下拉刷新，上拉加载和侧滑删除三个功能;
 Demo:
 ----
 <p>
-   <img src="https://github.com/heynchy/PullToRefeshAndSwipeMenu/blob/master/ScreenShot/1.gif" width="350" alt="Screenshot"/>
+   <img src="https://github.com/heynchy/SwipeMenuAndPullToRefresh/blob/master/ScreenShot/1.gif" width="350" alt="Screenshot"/>
 </p>
 <p>
-   <img src="https://github.com/heynchy/PullToRefeshAndSwipeMenu/blob/master/ScreenShot/2.gif" width="350" alt="Screenshot"/>
+   <img src="https://github.com/heynchy/SwipeMenuAndPullToRefresh/blob/master/ScreenShot/2.gif" width="350" alt="Screenshot"/>
 </p>
 <p>
-   <img src="https://github.com/heynchy/PullToRefeshAndSwipeMenu/blob/master/ScreenShot/3.gif" width="350" alt="Screenshot"/>
+   <img src="https://github.com/heynchy/SwipeMenuAndPullToRefresh/blob/master/ScreenShot/3.gif" width="350" alt="Screenshot"/>
 </p>        
 
 ## Usage
@@ -21,9 +21,7 @@ dependencies {
    compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:0.1.6'
 }
 ```
-## code  全部功能的实现
-* add PullToRefreshLayoutView in layout xml
-## ListView
+## ListView全部功能的实现
 ### Step1. 添加xml
 ```xml
      <com.chy.srlibrary.PTRLayoutView
@@ -102,7 +100,7 @@ dependencies {
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
  ```
-## ExpandableListView
+## ExpandableListView全部功能的实现
 ### Step1. 添加xml
 ```xml
     <com.chy.srlibrary.PTRLayoutView
