@@ -13,7 +13,7 @@ Demo:
    <img src="https://github.com/heynchy/PullToRefeshAndSwipeMenu/blob/master/ScreenShot/3.gif" width="350" alt="Screenshot"/>
 </p>        
 
-# Usage
+## Usage
 ###  Add dependency
 
 ```groovy
@@ -21,7 +21,7 @@ dependencies {
    compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:0.1.6'
 }
 ```
-# code  全部功能的实现
+## code  全部功能的实现
 * add PullToRefreshLayoutView in layout xml
 ## ListView
 ### Step1. 添加xml
@@ -193,16 +193,16 @@ dependencies {
 
 License
 ------
-Copyright (C) 2017 [heynchy]
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+    Copyright 2017 heynchy
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+        http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
