@@ -31,7 +31,7 @@ public class SMExpandListViewActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_smre);
+        setContentView(R.layout.activity_sme);
         initView();
         mAdapter = new StringDataExpandAdapter(this, mDataList);
         mSMRExpandView.setAdapter(mAdapter);
