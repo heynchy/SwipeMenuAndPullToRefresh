@@ -19,7 +19,7 @@ Demo:
 
 ```groovy
 dependencies {
-    compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:v0.1.8'
+    compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:v0.1.9'
 }
 ```
 ## ListView全部功能的实现
