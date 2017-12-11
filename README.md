@@ -1,8 +1,7 @@
 ﻿# SwipeMenuAndPullToRefresh
+ 
+ListView和ExpandableListView支持下拉刷新，上拉加载和侧滑删除三个功能, V0.1.8新增可根据条件设置某项不能侧滑的功能;
 
-ListView和ExpandableListView支持下拉刷新，上拉加载和侧滑删除三个功能;
-
-V0.1.8新增可根据条件设置某项不能侧滑的功能;
 Demo:
 ----
 <p>
