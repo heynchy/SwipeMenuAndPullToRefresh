@@ -1,6 +1,8 @@
-# SwipeMenuAndPullToRefresh
+﻿# SwipeMenuAndPullToRefresh
 
 ListView和ExpandableListView支持下拉刷新，上拉加载和侧滑删除三个功能;
+
+V0.1.8新增可根据条件设置某项不能侧滑的功能;
 Demo:
 ----
 <p>
@@ -73,6 +75,34 @@ dependencies {
             }
         });
         });
+	// 如果有侧滑删除事件，则可根据具体条件设置滑动项是否可以侧滑
+        mSWRListView.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View v, MotionEvent event) {
+               int action = event.getAction();
+               switch (action) {
+                   case MotionEvent.ACTION_DOWN:
+                       /**
+                        * oldPos  滑动的所处位置的position
+                        * setSwipeEnable() 是否进行侧滑：
+                        *           设置为false则不会发生侧滑；
+                        *           设置为true则会侧滑
+                        *           默认值为true
+                        *
+                        * 这里可根据具体的条件来判定是否可以进行滑动
+                        */
+                       int oldPos = mSWRListView.pointToPosition((int) event.getX(), (int) event.getY());
+                       if (oldPos < 5) {
+                           // 根据具体条件设置不滑动项（例如： position小于5时不滑动）
+                           mSWRListView.setSwipeEnable(false);
+                           Toast.makeText(getBaseContext(), "前5项不滑动！！", Toast.LENGTH_SHORT).show();
+                       } else {
+                           mSWRListView.setSwipeEnable(true);
+                       }
+                }
+               return false;
+           }
+       });
 ```
 ### Step3. 监听下拉刷新和上拉加载的事件
  ```java
@@ -154,6 +184,34 @@ dependencies {
                 return false;
             }
         });
+	// 如果有侧滑删除事件，则可根据具体条件设置滑动项是否可以侧滑
+        mSMRExpandView.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View v, MotionEvent event) {
+               int action = event.getAction();
+               switch (action) {
+                   case MotionEvent.ACTION_DOWN:
+                       /**
+                        * oldPos  滑动的所处位置的position
+                        * setSwipeEnable() 是否进行侧滑：
+                        *           设置为false则不会发生侧滑；
+                        *           设置为true则会侧滑
+                        *           默认值为true
+                        *
+                        * 这里可根据具体的条件来判定是否可以进行滑动
+                        */
+                       int oldPos = mSMRExpandView.pointToPosition((int) event.getX(), (int) event.getY());
+                       if (oldPos < 5) {
+                           // 根据具体条件设置不滑动项（例如： position小于5时不滑动）
+                           mSMRExpandView.setSwipeEnable(false);
+                           Toast.makeText(getBaseContext(), "前5项不滑动！！", Toast.LENGTH_SHORT).show();
+                       } else {
+                           mSMRExpandView.setSwipeEnable(true);
+                       }
+                }
+               return false;
+           }
+       });
 ```
 ### Step3. 监听下拉刷新和上拉加载的事件
  ```java
