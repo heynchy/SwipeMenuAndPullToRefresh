@@ -4,12 +4,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chy.srlibrary.PTRLayoutView;
@@ -25,10 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * listView 的侧滑删除
+ * listView 的侧滑删除，上拉加载和下拉刷新 （可设置条件令某项不滑动）
  */
-public class SMListViewActivity extends AppCompatActivity {
+public class SMRListViewActivity2 extends AppCompatActivity {
 
+    private PTRLayoutView mPTRLayoutView; // 刷新控制器
     private SMRListView mSWRListView;     // 侧滑listView
     private StringDataAdapter mAdapter;
     private List<String> mDataList;
@@ -36,7 +34,7 @@ public class SMListViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sm);
+        setContentView(R.layout.activity_smr);
         initView();
         mDataList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -72,16 +70,55 @@ public class SMListViewActivity extends AppCompatActivity {
                 return false;
             }
         });
-        mSWRListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mSWRListView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "点击了"+ position + "项！！！", Toast.LENGTH_SHORT).show();
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        /**
+                         * oldPos  滑动的所处位置的position
+                         * setSwipeEnable() 是否进行侧滑：
+                         *           设置为false则不会发生侧滑；
+                         *           设置为true则会侧滑
+                         *           默认值为true
+                         *
+                         * 这里可根据具体的条件来判定是否可以进行滑动
+                         */
+                        int oldPos = mSWRListView.pointToPosition((int) event.getX(), (int) event.getY());
+                        if (oldPos < 5) {
+                            // 根据具体条件设置不滑动项（例如： position小于5时不滑动）
+                            Toast.makeText(getBaseContext(), "前5项不滑动！！", Toast.LENGTH_SHORT).show();
+                            mSWRListView.setSwipeEnable(false);
+                        } else {
+                            mSWRListView.setSwipeEnable(true);
+                        }
+                }
+                return false;
+            }
+        });
+
+        // 上拉加载和下拉刷新的监听事件
+        mPTRLayoutView.setOnRefreshListener(new PTRLayoutView.OnRefreshListener() {
+            @Override
+            public void onRefresh(PTRLayoutView ptrLayoutView) {
+                // 处理下拉刷新
+                mPTRLayoutView.refreshFinish(PTRLayoutView.SUCCEED); // 此句话必须有（以结束加载）
+                Toast.makeText(getApplicationContext(), "刷新成功！", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLoadMore(PTRLayoutView ptrLayoutView) {
+                // 处理上拉加载
+                mPTRLayoutView.loadmoreFinish(PTRLayoutView.SUCCEED); // 此句话必须有（以结束加载）
+                Toast.makeText(getApplicationContext(), "加载成功！", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
     private void initView() {
+        mPTRLayoutView = (PTRLayoutView) findViewById(R.id.refresh_view);
         mSWRListView = (SMRListView) findViewById(R.id.lv_swipe_menu);
 
     }

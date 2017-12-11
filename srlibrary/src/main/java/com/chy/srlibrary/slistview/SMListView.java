@@ -35,7 +35,7 @@ public class SMListView extends ListView {
 	private float mDownY;
 	private int mTouchState;
 	private int mTouchPosition;
-	private boolean swipeEnable = true;
+	private boolean swipeEnable = true;  // 标志位---是否允许左滑
 	private SMLayout mTouchView;
 	private SMListView.OnSwipeListener mOnSwipeListener;
 
@@ -120,7 +120,7 @@ public class SMListView extends ListView {
 		switch (action) {
 			case MotionEvent.ACTION_DOWN:
 				int oldPos = mTouchPosition;
-				swipeEnable = true;
+				swipeEnable = isSwipeEnable();
 				mDownX = ev.getX();
 				mDownY = ev.getY();
 				mTouchState = TOUCH_STATE_NONE;
@@ -207,6 +207,14 @@ public class SMListView extends ListView {
 				break;
 		}
 		return super.onTouchEvent(ev);
+	}
+
+	public boolean isSwipeEnable() {
+		return swipeEnable;
+	}
+
+	public void setSwipeEnable(boolean swipeEnable) {
+		this.swipeEnable = swipeEnable;
 	}
 
 	public void smoothOpenMenu(int position) {

@@ -43,6 +43,7 @@ public class SMExpandableView extends ExpandableListView {
 	private OnMenuStateChangeListener mOnMenuStateChangeListener;
 	private Interpolator mCloseInterpolator;
 	private Interpolator mOpenInterpolator;
+	private boolean swipeEnable = true;  // 标志位---是否允许左滑
 
 	private boolean mState = true;
 	private int mExpandCount = -1;
@@ -183,7 +184,7 @@ public class SMExpandableView extends ExpandableListView {
 				mDownX = ev.getX();
 				mDownY = ev.getY();
 				mTouchState = TOUCH_STATE_NONE;
-
+				swipeEnable = isSwipeEnable();
 				mTouchPosition = pointToPosition((int) ev.getX(), (int) ev.getY());
 
 				if (mTouchPosition == oldPos && mTouchView != null
@@ -235,7 +236,7 @@ public class SMExpandableView extends ExpandableListView {
 				float dy = Math.abs((ev.getY() - mDownY));
 				float dx = Math.abs((ev.getX() - mDownX));
 				if (mTouchState == TOUCH_STATE_X) {
-					if (mTouchView != null) {
+					if (mTouchView != null && swipeEnable) {
 						mTouchView.onSwipe(ev);
 					}
 					getSelector().setState(new int[]{0});
@@ -258,7 +259,9 @@ public class SMExpandableView extends ExpandableListView {
 				if (mTouchState == TOUCH_STATE_X) {
 					if (mTouchView != null) {
 						boolean isBeforeOpen = mTouchView.isOpen();
-						mTouchView.onSwipe(ev);
+						if (swipeEnable) {
+							mTouchView.onSwipe(ev);
+						}
 						boolean isAfterOpen = mTouchView.isOpen();
 						if (isBeforeOpen != isAfterOpen && mOnMenuStateChangeListener != null) {
 							if (isAfterOpen) {
@@ -283,6 +286,14 @@ public class SMExpandableView extends ExpandableListView {
 		}
 
 		return super.onTouchEvent(ev);
+	}
+
+	public boolean isSwipeEnable() {
+		return swipeEnable;
+	}
+
+	public void setSwipeEnable(boolean swipeEnable) {
+		this.swipeEnable = swipeEnable;
 	}
 
 	public void smoothOpenMenu(int position) {

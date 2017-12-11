@@ -24,6 +24,9 @@ import com.chy.swipemenuandpulltorefresh.adapter.StringDataExpandAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ExpandListView 父条目侧滑删除和上拉刷新以及下拉加载
+ */
 public class SMRExpandListViewActivity extends AppCompatActivity {
 
     private PTRLayoutView mPTRLayoutView; // 刷新控制器

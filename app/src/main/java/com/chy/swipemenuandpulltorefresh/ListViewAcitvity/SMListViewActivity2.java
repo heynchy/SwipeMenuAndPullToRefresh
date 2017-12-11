@@ -4,15 +4,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chy.srlibrary.PTRLayoutView;
 import com.chy.srlibrary.SwipeMenu;
 import com.chy.srlibrary.SwipeMenuItem;
 import com.chy.srlibrary.interfaceutil.SwipeMenuCreatorInterfaceUtil;
@@ -25,9 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * listView 的侧滑删除
+ * listView 的侧滑删除(可设置条件令某一项不滑动)
  */
-public class SMListViewActivity extends AppCompatActivity {
+public class SMListViewActivity2 extends AppCompatActivity {
 
     private SMRListView mSWRListView;     // 侧滑listView
     private StringDataAdapter mAdapter;
@@ -76,6 +73,34 @@ public class SMListViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), "点击了"+ position + "项！！！", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mSWRListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        /**
+                         * oldPos  滑动的所处位置的position
+                         * setSwipeEnable() 是否进行侧滑：
+                         *           设置为false则不会发生侧滑；
+                         *           设置为true则会侧滑
+                         *           默认值为true
+                         *
+                         * 这里可根据具体的条件来判定是否可以进行滑动
+                         */
+                        int oldPos = mSWRListView.pointToPosition((int) event.getX(), (int) event.getY());
+                        if (oldPos < 5) {
+                            // 根据具体条件设置不滑动项（例如： position小于5时不滑动）
+                            mSWRListView.setSwipeEnable(false);
+                            Toast.makeText(getBaseContext(), "前5项不滑动！！", Toast.LENGTH_SHORT).show();
+                        } else {
+                            mSWRListView.setSwipeEnable(true);
+                        }
+                }
+                return false;
             }
         });
     }
