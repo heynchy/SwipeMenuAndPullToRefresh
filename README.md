@@ -91,6 +91,10 @@ dependencies {
                         * 这里可根据具体的条件来判定是否可以进行滑动
                         */
                        int oldPos = mSWRListView.pointToPosition((int) event.getX(), (int) event.getY());
+		       if (oldPos < 0){
+		           // 判定当没有找到侧滑的Item时，返回false  
+		           return false;
+		       }
                        if (oldPos < 5) {
                            // 根据具体条件设置不滑动项（例如： position小于5时不滑动）
                            mSWRListView.setSwipeEnable(false);
@@ -200,6 +204,10 @@ dependencies {
                         * 这里可根据具体的条件来判定是否可以进行滑动
                         */
                        int oldPos = mSMRExpandView.pointToPosition((int) event.getX(), (int) event.getY());
+                       if (oldPos < 0){
+		           // 判定当没有找到侧滑的Item时，返回false  
+		           return false;
+		       }
                        if (oldPos < 5) {
                            // 根据具体条件设置不滑动项（例如： position小于5时不滑动）
                            mSMRExpandView.setSwipeEnable(false);
