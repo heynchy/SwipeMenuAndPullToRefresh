@@ -19,7 +19,7 @@ Demo:
 
 ```groovy
 	dependencies {
-	        implementation 'com.github.heynchy:eros-plugin-filecache-manager:0.0.2'
+	     compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:v0.1.9'
 	}
 
 ```
