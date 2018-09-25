@@ -18,9 +18,10 @@ Demo:
 ###  Add dependency
 
 ```groovy
-dependencies {
-    compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:v0.1.9'
-}
+	dependencies {
+	        implementation 'com.github.heynchy:eros-plugin-filecache-manager:0.0.2'
+	}
+
 ```
 ## ListView全部功能的实现
 ### Step1. 添加xml
