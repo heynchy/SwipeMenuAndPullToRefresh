@@ -7,7 +7,7 @@
                 android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:paddingBottom="10dp"
         android:paddingTop="10dp">
@@ -19,16 +19,16 @@
 
             <ImageView
                 android:id="@+id/pull_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="60dp"
                 android:src="@drawable/pull_icon_big"/>
 
             <ImageView
                 android:id="@+id/refreshing_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/refreshing"
@@ -41,12 +41,12 @@
                 android:layout_centerInParent="true"
                 android:text="@string/pull_to_refresh"
                 android:textColor="#5c5c5c"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/state_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"
                 android:layout_toLeftOf="@id/state_tv"
