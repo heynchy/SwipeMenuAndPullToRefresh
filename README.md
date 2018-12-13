@@ -19,7 +19,7 @@ Demo:
 
 ```groovy
 	dependencies {
-	     compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:v0.1.9'
+	     compile 'com.github.heynchy:SwipeMenuAndPullToRefresh:v0.2.0'
 	}
 
 ```
@@ -60,12 +60,11 @@ Demo:
                 menu.addMenuItem(deleteItem);
             }
         };
-
-        // 设置侧滑删除(如果不设置则不会有侧滑删除，仅有刷新)
-         mSMRExpandView.setMenuCreator(creator);
-        // 点击侧滑按钮的响应事件（如果涉及自定义的侧滑布局，可参考SwipMenuListView的实现方法） 
-         // 侧滑的监听事件
-        mSMRExpandView.setOnMenuItemClickListener(new SMExpandableView.OnMenuItemClickListener() {
+	// 设置侧滑删除(如果不设置则不会有侧滑删除，仅有刷新)
+         mSWRListView.setMenuCreator(creator);
+	// 点击侧滑按钮的响应事件（如果涉及自定义的侧滑布局，可参考SwipMenuListView的实现方法） 
+        // 侧滑的监听事件
+        mSWRListView.setOnMenuItemClickListener(new SMListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int i, SwipeMenu swipeMenu, int i1) {
                 mDataList.remove(i);
@@ -73,7 +72,6 @@ Demo:
                 Toast.makeText(getApplicationContext(), "删除成功！", Toast.LENGTH_SHORT).show();
                 return false;
             }
-        });
         });
 	// 如果有侧滑删除事件，则可根据具体条件设置滑动项是否可以侧滑
         mSWRListView.setOnTouchListener(new View.OnTouchListener() {
@@ -110,6 +108,7 @@ Demo:
 ```
 ### Step3. 监听下拉刷新和上拉加载的事件
  ```java
+  // com.chy.srlibrary.PTRLayoutView ====> mPTRLayoutView
   mPTRLayoutView.setOnRefreshListener(new PTRLayoutView.OnRefreshListener() {
             @Override
             public void onRefresh(PTRLayoutView ptrLayoutView) {
