@@ -74,6 +74,16 @@ public class SMRExpandListViewActivity extends AppCompatActivity {
         mPTRLayoutView.setOnRefreshListener(new PTRLayoutView.OnRefreshListener() {
             @Override
             public void onRefresh(PTRLayoutView ptrLayoutView) {
+
+                // 刷新测试数据
+                mDataList.clear();
+                List<String> childList = new ArrayList<>();
+                for (int i = 0; i < 4; i++) {
+                    childList.add("小标题： " + i);
+                }
+                for (int i = 0; i < 20; i++) {
+                    mDataList.add(new StringEntity("大标题：" + i, childList));
+                }
                 // 处理下拉刷新
                 mAdapter.notifyDataSetChanged();
                 mPTRLayoutView.refreshFinish(PTRLayoutView.SUCCEED); // 此句话必须有（以结束加载）
@@ -83,6 +93,11 @@ public class SMRExpandListViewActivity extends AppCompatActivity {
             @Override
             public void onLoadMore(PTRLayoutView ptrLayoutView) {
                 // 处理上拉加载
+                List<String> childList = new ArrayList<>();
+                for (int i = 0; i < 4; i++) {
+                    childList.add("小标题： " + i);
+                }
+                mDataList.add(new StringEntity("大标题：加载", childList));
                 mAdapter.notifyDataSetChanged();
                 mPTRLayoutView.loadmoreFinish(PTRLayoutView.SUCCEED); // 此句话必须有（以结束加载）
                 Toast.makeText(getApplicationContext(), "加载成功！", Toast.LENGTH_SHORT).show();
